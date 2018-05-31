@@ -6,16 +6,21 @@ output:
     toc_float: true
 ---
 
-#### Article ID: CARPS_6-1-2015_PS
-#### Pilot 1: Elizabeth Blevins
-#### Co-pilot: Barbara Barbosa Born
-#### Start date: 10/27/2017
-#### End date: 11/5/2017   
+```{r}
+articleID <- "6-1-2015_PS" # insert the article ID code here e.g., "10-3-2015_PS"
+reportType <- 'pilot'
+pilotNames <- "Elizabeth Blevins, Barbara Barbosa Born" # insert the pilot's name here e.g., "Tom Hardwicke". If there are multiple pilots enter both names in a character string e.g., "Tom Hardwicke, Bob Dylan"
+copilotNames <- "" # insert the co-pilot's name here e.g., "Michael Frank". If there are multiple co-pilots enter both names in a character string e.g., "Tom Hardwicke, Bob Dylan"
+pilotTTC <- 420 # insert the pilot's estimated time to complete (in minutes, fine to approximate) e.g., 120
+copilotTTC <- NA # insert the co- pilot's estimated time to complete (in minutes, fine to approximate) e.g., 120
+pilotStartDate <- as.Date("10/27/2017", format = "%m/%d/%y") # insert the pilot's start date in US format e.g., as.Date("01/25/18", format = "%m/%d/%y")
+copilotStartDate <- as.Date("", format = "%m/%d/%y") # insert the co-pilot's start date in US format e.g., as.Date("01/25/18", format = "%m/%d/%y")
+completionDate <- as.Date("", format = "%m/%d/%y") # copilot insert the date of final report completion (after any necessary rounds of author assistance) in US format e.g., as.Date("01/25/18", format = "%m/%d/%y")
+```
 
 -------
 
 #### Methods summary: 
-**Brief summary of the methods underlying the target outcomes**:
 
 The target outcomes are from Experiment 1, in which ten participants took part. Participants completed two blocks consisting each of a different task. In the "grasping task", participants lifted a target disk from the table using their thumb and forefinger; in the "manual estimation task", participants used their thumb and forefinger to indicate the size of the target before physically lifting it. Within each block, the target disk varied in size (3.00 cm or 3.75 cm) and whether it was presented on the table by itself or accompanied by other disks. Additionally, participants wore liquid-crystal goggles. On half of the trials, which the researchers refer to as "open-loop" trials, the goggles were closed at the beginning of the trial meaning "that participants could not see their moving hand or the disks" (Chen, Sperandio, & Goodale, 2015, p. 60). On the remaining trials, which were labeled as "closed-loop", the goggles were closed after three seconds, allowing participants to track both their motion and the target.
 
@@ -24,7 +29,6 @@ Experiment 1 consisted of a 2 Task (grip, estimate) X 2 View (closed-loop, open-
 ------
 
 #### Target outcomes: 
-**Effects of crowding on perception and action**:
 
 "Experiment 1 was designed to explore the effects of crowding on perception and action, with a particular focus on whether participants could scale their grip aperture to the size of the target even when they could not consciously identify the size of the target. We carried out a four-way repeated measures ANOVA on the manual estimates and PGAs with task (estimation vs. grasping), crowding condition (uncrowded vs. crowded), viewing condition (closed- vs. open-loop), and target size (3.0 vs. 3.75 cm) as main factors. The significant interaction between task and crowding condition, F(1, 9) = 6.818, p = .028, suggested that crowding had different effects on performance of the grasping and manual estimation tasks. Not surprisingly, when the target was presented in isolation, participants were able to manually estimate the sizes of the two targets—and this was true for both closed-loop trials, t(9) = 7.23, p < .001, and open-loop trials, t(9) = 9.19, p < .001. Similarly, participants showed excellent grip scaling for targets presented in isolation on both closed-loop trials, t(9) = 4.29, p = .002, and openloop trials, t(9) = 4.79, p = .001 (Fig. 3)." (Chen, Sperandio, & Goodale, 2015, pp 62-63).
 
@@ -45,12 +49,17 @@ library(readxl) # import excel files
 library(CARPSreports) # custom report functions
 library(ez) # for repeated measures ANOVA's
 library(broom)
-# library(purrr)
+```
+
+```{r}
+# Prepare report object. This will be updated automatically by the reproCheck function each time values are compared.
+reportObject <- data.frame(dummyRow = TRUE, reportedValue = NA, obtainedValue = NA, valueType = NA, percentageError = NA, comparisonOutcome = NA, eyeballCheck = NA)
 ```
 
 ## Step 2: Load data
 
 I read in the data file, "data_Exp1.xlsx", from the "summary" tab.
+
 ```{r}
 # read data from Exp 1 summary sheet
 # ignore column names
@@ -201,8 +210,6 @@ ttest_results_clean <- kable(ttest_results_name[c("ttest_type","estimate", "stat
 ttest_results_clean
 ```
 
-## Step 5: Conclusion
-
 Lastly, I used the `compareValues` function to record the number of errors. For two *t*-tests, the associated *p*-values were recorded as *p* < .001 in the manuscript. I could not use the `compareValues` function, but since the *p*-values I obtained similarly fell below .001, I did not count them as errors. (I consulted with Tom via email regarding this issue.)
 ```{r echo=FALSE}
 # save statistics for conclusion
@@ -256,45 +263,47 @@ ttest8_pval <- ttest_results$p.value[[8]]
 ```{r}
 # compare ANOVA results
 # df numerator
-compareValues(reportedValue = 1, obtainedValue = anova_taskxcond_DFn, isP = FALSE)
+reportObject <- reproCheck(reportedValue = "1", obtainedValue = anova_taskxcond_DFn, valueType = 'df')
 # df denominator
-compareValues(reportedValue = 9, obtainedValue = anova_taskxcond_DFd, isP = FALSE)
+reportObject <- reproCheck(reportedValue = "9", obtainedValue = anova_taskxcond_DFd, valueType = 'df')
 # F statistic
-compareValues(reportedValue = 6.818, obtainedValue = anova_taskxcond_fval, isP = FALSE)
+reportObject <- reproCheck(reportedValue = "6.818", obtainedValue = anova_taskxcond_fval, valueType = 'F')
 # p value
-compareValues(reportedValue = .028, obtainedValue = anova_taskxcond_pval, isP = TRUE)
+reportObject <- reproCheck(reportedValue = ".028", obtainedValue = anova_taskxcond_pval, valueType = 'p')
 
 # compare t-test results
 # ttest for manual estimation of isolated targets on closed-loop trials (compare 3cm vs. 3.75cm)
 # t df
-compareValues(reportedValue = 9, obtainedValue = ttest1_df, isP = FALSE)
+reportObject <- reproCheck(reportedValue = "9", obtainedValue = ttest1_df, valueType = 'df')
 # t statistic
-compareValues(reportedValue = 7.23, obtainedValue = ttest1_tval, isP = FALSE)
+reportObject <- reproCheck(reportedValue = "7.23", obtainedValue = ttest1_tval, valueType = 't')
 # p value reported as < .001
 
 # ttest for manual estimation of isolated targets on open-loop trials (compare 3cm vs. 3.75cm)
 # t df
-compareValues(reportedValue = 9, obtainedValue = ttest2_df, isP = FALSE)
+reportObject <- reproCheck(reportedValue = "9", obtainedValue = ttest2_df, valueType = 'df')
 # t statistic
-compareValues(reportedValue = 9.19, obtainedValue = ttest2_tval, isP = FALSE)
+reportObject <- reproCheck(reportedValue = "9.19", obtainedValue = ttest2_tval, valueType = 't')
 # p value reported as < .001
 
 # ttest for grip of isolated targets on closed-loop trials (compare 3cm vs. 3.75cm)
 # t df
-compareValues(reportedValue = 9, obtainedValue = ttest3_df, isP = FALSE)
+reportObject <- reproCheck(reportedValue = "9", obtainedValue = ttest3_df, valueType = 'df')
 # t statistic
-compareValues(reportedValue = 4.29, obtainedValue = ttest3_tval, isP = FALSE)
+reportObject <- reproCheck(reportedValue = "4.29", obtainedValue = ttest3_tval, valueType = 't')
 # t p value
-compareValues(reportedValue = .002, obtainedValue = ttest3_pval, isP = TRUE)
+reportObject <- reproCheck(reportedValue = ".002", obtainedValue = ttest3_pval, valueType = 'p')
 
 # ttest for grip of isolated targets on open-loop trials (compare 3cm vs. 3.75cm)
 # t df
-compareValues(reportedValue = 9, obtainedValue = ttest4_df, isP = FALSE)
+reportObject <- reproCheck(reportedValue = "9", obtainedValue = ttest4_df, valueType = 'df')
 # t statistic
-compareValues(reportedValue = 4.79, obtainedValue = ttest4_tval, isP = FALSE)
+reportObject <- reproCheck(reportedValue = "4.79", obtainedValue = ttest4_tval, valueType = 't')
 # t p value
-compareValues(reportedValue = .001, obtainedValue = ttest4_pval, isP = TRUE)
+reportObject <- reproCheck(reportedValue = ".001", obtainedValue = ttest4_pval, valueType = 'p')
 ```
+
+## Step 5: Conclusion
 
 The study results were successfully replicated. It appears the researchers consistently rounded the *t*-statistics down, producing three minor numerical errors. In the following summary, I report the statistics to three decimal places.
 
@@ -303,25 +312,58 @@ A 2 Task (grip, estimate) X 2 View (closed-loop, open-loop) X 2 Condition (isola
 Comparing performance in the manual estimation condition where the target disk was presented by itself, participants successfully differentiated between the two disk sizes on closed-loop trials, *t*(`r ttest1_df`) = `r round(ttest1_tval, digits=3)`, *p* < .001, as well as on open-loop trials, *t*(`r ttest2_df`) = `r round(ttest2_tval, digits=3)`, *p* < .001. A similar pattern of results was obtained when participants lifted the target disk in the isolation condition. Again, participants distinguished between the two disk sizes on closed-loop trials, *t*(`r ttest3_df`) = `r round(ttest3_tval, digits=3)`, *p* = `r round(ttest3_pval, digits=3)`, and on open-loop trials, *t*(`r ttest4_df`) = `r round(ttest4_tval, digits=3)`, *p* = `r round(ttest4_pval, digits=3)`.
 
 ```{r}
-# carpsReport() arguments
-# Report_Type: Enter 'pilot' or 'final'
-# Article_ID: Enter the article's unique ID code
-# Insufficient_Information_Errors: Enter the number of Insufficient Information Errors
-# Decision_Errors Enter: the number of decision errors
-# Major_Numerical_Errors: Enter the number of major numerical errors
-# Time_to_Complete: Enter the estimated time to complete the report in minutes
-# Author_Assistance: Enter whether author assistance was required (TRUE/FALSE)
+Author_Assistance = FALSE # was author assistance provided? (if so, enter TRUE)
 
-carpsReport(Report_Type = "pilot", 
-             Article_ID = "CARPS_6-1-2015_PS", 
-             Insufficient_Information_Errors = 0, 
-             Decision_Errors = 0, 
-             Major_Numerical_Errors = 0, 
-             Time_to_Complete = 420, 
-             Author_Assistance = FALSE)
+Insufficient_Information_Errors <- 0 # how many discrete insufficient information issues did you encounter?
+
+# Assess the causal locus (discrete reproducibility issues) of any reproducibility errors. Note that there doesn't necessarily have to be a one-to-one correspondance between discrete reproducibility issues and reproducibility errors. For example, it could be that the original article neglects to mention that a Greenhouse-Geisser correct was applied to ANOVA outcomes. This might result in multiple reproducibility errors, but there is a single causal locus (discrete reproducibility issue).
+
+locus_typo <- NA # how many discrete issues did you encounter that related to typographical errors?
+locus_specification <- NA # how many discrete issues did you encounter that related to incomplete, incorrect, or unclear specification of the original analyses?
+locus_analysis <- NA # how many discrete issues did you encounter that related to errors in the authors' original analyses?
+locus_data <- NA # how many discrete issues did you encounter that related to errors in the data files shared by the authors?
+locus_unidentified <- NA # how many discrete issues were there for which you could not identify the cause
+
+Affects_Conclusion <- NA # Do any reproducibility issues encounter appear to affect the conclusions made in the original article? This is a subjective judgement, but you should taking into account multiple factors, such as the presence/absence of decision errors, the number of target outcomes that could not be reproduced, the type of outcomes that could or could not be reproduced, the difference in magnitude of effect sizes, and the predictions of the specific hypothesis under scrutiny.
 ```
 
+```{r}
+reportObject <- reportObject %>%
+  filter(dummyRow == FALSE) %>% # remove the dummy row
+  select(-dummyRow) %>% # remove dummy row designation
+  mutate(articleID = articleID) %>% # add the articleID 
+  select(articleID, everything()) # make articleID first column
+
+# decide on final outcome
+if(any(reportObject$comparisonOutcome != "MATCH") | Insufficient_Information_Errors > 0){
+  finalOutcome <- "Failure without author assistance"
+  if(Author_Assistance == T){
+    finalOutcome <- "Failure despite author assistance"
+  }
+}else{
+  finalOutcome <- "Success without author assistance"
+  if(Author_Assistance == T){
+    finalOutcome <- "Success with author assistance"
+  }
+}
+
+# collate report extra details
+reportExtras <- data.frame(articleID, pilotNames, copilotNames, pilotTTC, copilotTTC, pilotStartDate, copilotStartDate, completionDate, Author_Assistance, finalOutcome, Insufficient_Information_Errors, locus_typo, locus_specification, locus_analysis, locus_data, locus_unidentified)
+
+# save report objects
+if(reportType == "pilot"){
+  write_csv(reportObject, "pilotReportDetailed.csv")
+  write_csv(reportExtras, "pilotReportExtras.csv")
+}
+
+if(reportType == "final"){
+  write_csv(reportObject, "finalReportDetailed.csv")
+  write_csv(reportExtras, "finalReportExtras.csv")
+}
+```
+
+# Session information
+
 ```{r session_info, include=TRUE, echo=TRUE, results='markup'}
-# output information about package versions
 devtools::session_info()
 ```
