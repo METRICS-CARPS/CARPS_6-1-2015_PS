@@ -93,6 +93,9 @@ img {
 .tabbed-pane {
   padding-top: 12px;
 }
+.html-widget {
+  margin-bottom: 20px;
+}
 button.code-folding-btn:focus {
   outline: none;
 }
@@ -223,12 +226,12 @@ div.tocify {
 <pre class="r"><code>articleID &lt;- &quot;6-1-2015_PS&quot; # insert the article ID code here e.g., &quot;10-3-2015_PS&quot;
 reportType &lt;- 'pilot'
 pilotNames &lt;- &quot;Elizabeth Blevins, Barbara Barbosa Born&quot; # insert the pilot's name here e.g., &quot;Tom Hardwicke&quot;. If there are multiple pilots enter both names in a character string e.g., &quot;Tom Hardwicke, Bob Dylan&quot;
-copilotNames &lt;- &quot;&quot; # insert the co-pilot's name here e.g., &quot;Michael Frank&quot;. If there are multiple co-pilots enter both names in a character string e.g., &quot;Tom Hardwicke, Bob Dylan&quot;
+copilotNames &lt;- &quot;Manuel Bohn&quot; # insert the co-pilot's name here e.g., &quot;Michael Frank&quot;. If there are multiple co-pilots enter both names in a character string e.g., &quot;Tom Hardwicke, Bob Dylan&quot;
 pilotTTC &lt;- 420 # insert the pilot's estimated time to complete (in minutes, fine to approximate) e.g., 120
-copilotTTC &lt;- NA # insert the co- pilot's estimated time to complete (in minutes, fine to approximate) e.g., 120
+copilotTTC &lt;- 60 # insert the co- pilot's estimated time to complete (in minutes, fine to approximate) e.g., 120
 pilotStartDate &lt;- as.Date(&quot;10/27/2017&quot;, format = &quot;%m/%d/%y&quot;) # insert the pilot's start date in US format e.g., as.Date(&quot;01/25/18&quot;, format = &quot;%m/%d/%y&quot;)
-copilotStartDate &lt;- as.Date(&quot;&quot;, format = &quot;%m/%d/%y&quot;) # insert the co-pilot's start date in US format e.g., as.Date(&quot;01/25/18&quot;, format = &quot;%m/%d/%y&quot;)
-completionDate &lt;- as.Date(&quot;&quot;, format = &quot;%m/%d/%y&quot;) # copilot insert the date of final report completion (after any necessary rounds of author assistance) in US format e.g., as.Date(&quot;01/25/18&quot;, format = &quot;%m/%d/%y&quot;)</code></pre>
+copilotStartDate &lt;- as.Date(&quot;10/19/2018&quot;, format = &quot;%m/%d/%y&quot;) # insert the co-pilot's start date in US format e.g., as.Date(&quot;01/25/18&quot;, format = &quot;%m/%d/%y&quot;)
+completionDate &lt;- as.Date(&quot;10/19/2018&quot;, format = &quot;%m/%d/%y&quot;) # copilot insert the date of final report completion (after any necessary rounds of author assistance) in US format e.g., as.Date(&quot;01/25/18&quot;, format = &quot;%m/%d/%y&quot;)</code></pre>
 <hr />
 <div id="methods-summary" class="section level4">
 <h4>Methods summary:</h4>
@@ -238,7 +241,9 @@ completionDate &lt;- as.Date(&quot;&quot;, format = &quot;%m/%d/%y&quot;) # copi
 </div>
 <div id="target-outcomes" class="section level4">
 <h4>Target outcomes:</h4>
-<p>“Experiment 1 was designed to explore the effects of crowding on perception and action, with a particular focus on whether participants could scale their grip aperture to the size of the target even when they could not consciously identify the size of the target. We carried out a four-way repeated measures ANOVA on the manual estimates and PGAs with task (estimation vs. grasping), crowding condition (uncrowded vs. crowded), viewing condition (closed- vs. open-loop), and target size (3.0 vs. 3.75 cm) as main factors. The significant interaction between task and crowding condition, F(1, 9) = 6.818, p = .028, suggested that crowding had different effects on performance of the grasping and manual estimation tasks. Not surprisingly, when the target was presented in isolation, participants were able to manually estimate the sizes of the two targets—and this was true for both closed-loop trials, t(9) = 7.23, p &lt; .001, and open-loop trials, t(9) = 9.19, p &lt; .001. Similarly, participants showed excellent grip scaling for targets presented in isolation on both closed-loop trials, t(9) = 4.29, p = .002, and openloop trials, t(9) = 4.79, p = .001 (Fig. 3).” (Chen, Sperandio, &amp; Goodale, 2015, pp 62-63).</p>
+<blockquote>
+<p>“Experiment 1 was designed to explore the effects of crowding on perception and action, with a particular focus on whether participants could scale their grip aperture to the size of the target even when they could not consciously identify the size of the target. We carried out a four-way repeated measures ANOVA on the manual estimates and PGAs with task (estimation vs. grasping), crowding condition (uncrowded vs. crowded), viewing condition (closed- vs. open-loop), and target size (3.0 vs. 3.75 cm) as main factors. The significant interaction between task and crowding condition, F(1, 9) = 6.818, p = .028, suggested that crowding had different effects on performance of the grasping and manual estimation tasks. Not surprisingly, when the target was presented in isolation, participants were able to manually estimate the sizes of the two targets—and this was true for both closed-loop trials, t(9) = 7.23, p &lt; .001, and open-loop trials, t(9) = 9.19, p &lt; .001. Similarly, participants showed excellent grip scaling for targets presented in isolation on both closed-loop trials, t(9) = 4.29, p = .002, and openloop trials, t(9) = 4.79, p = .001 (Fig. 3). Things were quite different, however, when the target disks were surrounded by flankers. In this condition, par- ticipants could no longer discriminate between the two disk sizes using a manual estimate—closed-loop trials: t(9) = 1.02, p = .334; open-loop trials: t(9) = 1.78, p = .108 presumably because the size of the target was per- ceptually invisible. (Note that we use the term invisible to refer to the fact that participants could not identify the size of the target, even though they were aware of its presence and position.) In contrast, when participants were asked to grasp the same targets, their PGAs were still scaled to target size—closed-loop trials: t(9) = 4.21, p = .002; open-loop trials: t(9) = 3.392, p = .008 (Fig. 3).” (Chen, Sperandio, &amp; Goodale, 2015, pp 62-63).</p>
+</blockquote>
 <hr />
 </div>
 <div id="step-1-load-packages" class="section level2">
@@ -488,11 +493,12 @@ descriptives_table</code></pre>
 <div id="inferential-statistics" class="section level3">
 <h3>Inferential statistics</h3>
 <p>Next, I conducted a four-way repeated measures ANOVA whereby <code>task</code>, <code>view</code>, <code>condition</code>, and <code>size</code> were treated as within subjects factors. Additionally, I specified Type III sum of squares in the model.</p>
+<p>From the target outcomes: &gt; The significant interaction between task and crowding condition, F(1, 9) = 6.818, p = .028, suggested that crowding had different effects on performance of the grasping and manual estimation tasks.</p>
 <pre class="r"><code># conduct repeated measures ANOVA
 # specified type III SS
 model &lt;- ezANOVA(d_tidy, dv = .(size_measurement_cm), wid = .(subj), within = .(task, view, cond, size), detailed = TRUE, type = &quot;III&quot;)
 # return model
-print(model)</code></pre>
+print(model) %&gt;% kable(digits = 3)</code></pre>
 <pre><code>## $ANOVA
 ##                 Effect DFn DFd          SSn        SSd            F
 ## 1          (Intercept)   1   9 3.539853e+03 37.9465210 839.56772811
@@ -528,7 +534,209 @@ print(model)</code></pre>
 ## 14 2.555293e-02     * 4.972418e-03
 ## 15 1.033635e-01       1.361434e-03
 ## 16 7.708511e-01       2.055319e-05</code></pre>
+<table class="kable_wrapper">
+<tbody>
+<tr>
+<td>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Effect</th>
+<th align="right">DFn</th>
+<th align="right">DFd</th>
+<th align="right">SSn</th>
+<th align="right">SSd</th>
+<th align="right">F</th>
+<th align="right">p</th>
+<th align="left">p&lt;.05</th>
+<th align="right">ges</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">(Intercept)</td>
+<td align="right">1</td>
+<td align="right">9</td>
+<td align="right">3539.853</td>
+<td align="right">37.947</td>
+<td align="right">839.568</td>
+<td align="right">0.000</td>
+<td align="left">*</td>
+<td align="right">0.977</td>
+</tr>
+<tr class="even">
+<td align="left">task</td>
+<td align="right">1</td>
+<td align="right">9</td>
+<td align="right">145.215</td>
+<td align="right">29.283</td>
+<td align="right">44.632</td>
+<td align="right">0.000</td>
+<td align="left">*</td>
+<td align="right">0.633</td>
+</tr>
+<tr class="odd">
+<td align="left">view</td>
+<td align="right">1</td>
+<td align="right">9</td>
+<td align="right">0.490</td>
+<td align="right">2.058</td>
+<td align="right">2.144</td>
+<td align="right">0.177</td>
+<td align="left"></td>
+<td align="right">0.006</td>
+</tr>
+<tr class="even">
+<td align="left">cond</td>
+<td align="right">1</td>
+<td align="right">9</td>
+<td align="right">11.865</td>
+<td align="right">2.750</td>
+<td align="right">38.833</td>
+<td align="right">0.000</td>
+<td align="left">*</td>
+<td align="right">0.124</td>
+</tr>
+<tr class="odd">
+<td align="left">size</td>
+<td align="right">1</td>
+<td align="right">9</td>
+<td align="right">12.177</td>
+<td align="right">2.301</td>
+<td align="right">47.634</td>
+<td align="right">0.000</td>
+<td align="left">*</td>
+<td align="right">0.127</td>
+</tr>
+<tr class="even">
+<td align="left">task:view</td>
+<td align="right">1</td>
+<td align="right">9</td>
+<td align="right">0.740</td>
+<td align="right">3.095</td>
+<td align="right">2.151</td>
+<td align="right">0.176</td>
+<td align="left"></td>
+<td align="right">0.009</td>
+</tr>
+<tr class="odd">
+<td align="left">task:cond</td>
+<td align="right">1</td>
+<td align="right">9</td>
+<td align="right">1.554</td>
+<td align="right">2.051</td>
+<td align="right">6.818</td>
+<td align="right">0.028</td>
+<td align="left">*</td>
+<td align="right">0.018</td>
+</tr>
+<tr class="even">
+<td align="left">view:cond</td>
+<td align="right">1</td>
+<td align="right">9</td>
+<td align="right">0.072</td>
+<td align="right">0.684</td>
+<td align="right">0.951</td>
+<td align="right">0.355</td>
+<td align="left"></td>
+<td align="right">0.001</td>
+</tr>
+<tr class="odd">
+<td align="left">task:size</td>
+<td align="right">1</td>
+<td align="right">9</td>
+<td align="right">0.026</td>
+<td align="right">1.015</td>
+<td align="right">0.228</td>
+<td align="right">0.645</td>
+<td align="left"></td>
+<td align="right">0.000</td>
+</tr>
+<tr class="even">
+<td align="left">view:size</td>
+<td align="right">1</td>
+<td align="right">9</td>
+<td align="right">0.019</td>
+<td align="right">0.353</td>
+<td align="right">0.481</td>
+<td align="right">0.505</td>
+<td align="left"></td>
+<td align="right">0.000</td>
+</tr>
+<tr class="odd">
+<td align="left">cond:size</td>
+<td align="right">1</td>
+<td align="right">9</td>
+<td align="right">3.936</td>
+<td align="right">0.533</td>
+<td align="right">66.488</td>
+<td align="right">0.000</td>
+<td align="left">*</td>
+<td align="right">0.045</td>
+</tr>
+<tr class="even">
+<td align="left">task:view:cond</td>
+<td align="right">1</td>
+<td align="right">9</td>
+<td align="right">0.008</td>
+<td align="right">0.509</td>
+<td align="right">0.136</td>
+<td align="right">0.721</td>
+<td align="left"></td>
+<td align="right">0.000</td>
+</tr>
+<tr class="odd">
+<td align="left">task:view:size</td>
+<td align="right">1</td>
+<td align="right">9</td>
+<td align="right">0.135</td>
+<td align="right">0.473</td>
+<td align="right">2.567</td>
+<td align="right">0.144</td>
+<td align="left"></td>
+<td align="right">0.002</td>
+</tr>
+<tr class="even">
+<td align="left">task:cond:size</td>
+<td align="right">1</td>
+<td align="right">9</td>
+<td align="right">0.420</td>
+<td align="right">0.530</td>
+<td align="right">7.138</td>
+<td align="right">0.026</td>
+<td align="left">*</td>
+<td align="right">0.005</td>
+</tr>
+<tr class="odd">
+<td align="left">view:cond:size</td>
+<td align="right">1</td>
+<td align="right">9</td>
+<td align="right">0.115</td>
+<td align="right">0.314</td>
+<td align="right">3.284</td>
+<td align="right">0.103</td>
+<td align="left"></td>
+<td align="right">0.001</td>
+</tr>
+<tr class="even">
+<td align="left">task:view:cond:size</td>
+<td align="right">1</td>
+<td align="right">9</td>
+<td align="right">0.002</td>
+<td align="right">0.173</td>
+<td align="right">0.090</td>
+<td align="right">0.771</td>
+<td align="left"></td>
+<td align="right">0.000</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
 <p>I then conducted paired <em>t</em>-tests to decompose the interaction. (The target outcomes require only the first four <em>t</em>-tests, although I ran all pairwise comparisons.)</p>
+<p>From the target outcomes: &gt; Not surprisingly, when the target was presented in isolation, participants were able to manually estimate the sizes of the two targets and this was true for both closed-loop trials, t(9) = 7.23, p &lt; .001, and open-loop trials, t(9) = 9.19, p &lt; .001. Similarly, participants showed excellent grip scaling for targets presented in isolation on both closed-loop trials, t(9) = 4.29, p = .002, and openloop trials, t(9) = 4.79, p = .001 (Fig. 3) Things were quite different, however, when the target disks were surrounded by flankers. In this condition, par- ticipants could no longer discriminate between the two disk sizes using a manual estimate—closed-loop trials: t(9) = 1.02, p = .334; open-loop trials: t(9) = 1.78, p = .108 presumably because the size of the target was per- ceptually invisible. (Note that we use the term invisible to refer to the fact that participants could not identify the size of the target, even though they were aware of its presence and position.) In contrast, when participants were asked to grasp the same targets, their PGAs were still scaled to target size—closed-loop trials: t(9) = 4.21, p = .002; open-loop trials: t(9) = 3.392, p = .008 (Fig. 3).&quot; (Chen, Sperandio, &amp; Goodale, 2015, pp 62-63).</p>
 <pre class="r"><code># paired t-tests to compare 3cm vs. 3.75cm
 # manual estimation of isolated targets on closed-loop trials
 d_tidy_filter &lt;- d_tidy %&gt;%
@@ -737,6 +945,50 @@ reportObject &lt;- reproCheck(reportedValue = &quot;4.79&quot;, obtainedValue = 
 <pre class="r"><code># t p value
 reportObject &lt;- reproCheck(reportedValue = &quot;.001&quot;, obtainedValue = ttest4_pval, valueType = 'p')</code></pre>
 <pre><code>## [1] &quot;MATCH for p. The reported value (0.001) and the obtained value (0.001) differed by 0%. NB obtained value was rounded to 3 decimal places.&quot;</code></pre>
+<pre class="r"><code># compare t-test results
+# ttest for manual estimation of crowded targets on closed-loop trials (compare 3cm vs. 3.75cm)
+# t df
+reportObject &lt;- reproCheck(reportedValue = &quot;9&quot;, obtainedValue = ttest5_df, valueType = 'df')</code></pre>
+<pre><code>## [1] &quot;MATCH for df. The reported value (9) and the obtained value (9) differed by 0%. NB obtained value was rounded to 0 decimal places.&quot;</code></pre>
+<pre class="r"><code># t statistic
+reportObject &lt;- reproCheck(reportedValue = &quot;1.02&quot;, obtainedValue = ttest5_tval, valueType = 't')</code></pre>
+<pre><code>## [1] &quot;MATCH for t. The reported value (1.02) and the obtained value (1.02) differed by 0%. NB obtained value was rounded to 2 decimal places.&quot;</code></pre>
+<pre class="r"><code># t p value
+reportObject &lt;- reproCheck(reportedValue = &quot;.334&quot;, obtainedValue = ttest5_pval, valueType = 'p')</code></pre>
+<pre><code>## [1] &quot;MATCH for p. The reported value (0.334) and the obtained value (0.334) differed by 0%. NB obtained value was rounded to 3 decimal places.&quot;</code></pre>
+<pre class="r"><code># compare t-test results
+# ttest for manual estimation of crowded targets on open-loop trials (compare 3cm vs. 3.75cm)
+# t df
+reportObject &lt;- reproCheck(reportedValue = &quot;9&quot;, obtainedValue = ttest6_df, valueType = 'df')</code></pre>
+<pre><code>## [1] &quot;MATCH for df. The reported value (9) and the obtained value (9) differed by 0%. NB obtained value was rounded to 0 decimal places.&quot;</code></pre>
+<pre class="r"><code># t statistic
+reportObject &lt;- reproCheck(reportedValue = &quot;1.78&quot;, obtainedValue = ttest6_tval, valueType = 't')</code></pre>
+<pre><code>## [1] &quot;MATCH for t. The reported value (1.78) and the obtained value (1.78) differed by 0%. NB obtained value was rounded to 2 decimal places.&quot;</code></pre>
+<pre class="r"><code># t p value
+reportObject &lt;- reproCheck(reportedValue = &quot;.108&quot;, obtainedValue = ttest6_pval, valueType = 'p')</code></pre>
+<pre><code>## [1] &quot;MATCH for p. The reported value (0.108) and the obtained value (0.108) differed by 0%. NB obtained value was rounded to 3 decimal places.&quot;</code></pre>
+<pre class="r"><code># compare t-test results
+# ttest for grip of crowded targets on closed-loop trials (compare 3cm vs. 3.75cm)
+# t df
+reportObject &lt;- reproCheck(reportedValue = &quot;9&quot;, obtainedValue = ttest7_df, valueType = 'df')</code></pre>
+<pre><code>## [1] &quot;MATCH for df. The reported value (9) and the obtained value (9) differed by 0%. NB obtained value was rounded to 0 decimal places.&quot;</code></pre>
+<pre class="r"><code># t statistic
+reportObject &lt;- reproCheck(reportedValue = &quot;4.21&quot;, obtainedValue = ttest7_tval, valueType = 't')</code></pre>
+<pre><code>## [1] &quot;MINOR_ERROR for t. The reported value (4.21) and the obtained value (4.22) differed by 0.24%. NB obtained value was rounded to 2 decimal places.&quot;</code></pre>
+<pre class="r"><code># t p value
+reportObject &lt;- reproCheck(reportedValue = &quot;.002&quot;, obtainedValue = ttest7_pval, valueType = 'p')</code></pre>
+<pre><code>## [1] &quot;MATCH for p. The reported value (0.002) and the obtained value (0.002) differed by 0%. NB obtained value was rounded to 3 decimal places.&quot;</code></pre>
+<pre class="r"><code># compare t-test results
+# ttest for grip of crowded targets on open-loop trials (compare 3cm vs. 3.75cm)
+# t df
+reportObject &lt;- reproCheck(reportedValue = &quot;9&quot;, obtainedValue = ttest8_df, valueType = 'df')</code></pre>
+<pre><code>## [1] &quot;MATCH for df. The reported value (9) and the obtained value (9) differed by 0%. NB obtained value was rounded to 0 decimal places.&quot;</code></pre>
+<pre class="r"><code># t statistic
+reportObject &lt;- reproCheck(reportedValue = &quot;3.392&quot;, obtainedValue = ttest8_tval, valueType = 't')</code></pre>
+<pre><code>## [1] &quot;MATCH for t. The reported value (3.392) and the obtained value (3.392) differed by 0%. NB obtained value was rounded to 3 decimal places.&quot;</code></pre>
+<pre class="r"><code># t p value
+reportObject &lt;- reproCheck(reportedValue = &quot;.008&quot;, obtainedValue = ttest8_pval, valueType = 'p')</code></pre>
+<pre><code>## [1] &quot;MATCH for p. The reported value (0.008) and the obtained value (0.008) differed by 0%. NB obtained value was rounded to 3 decimal places.&quot;</code></pre>
 </div>
 </div>
 <div id="step-5-conclusion" class="section level2">
@@ -744,6 +996,7 @@ reportObject &lt;- reproCheck(reportedValue = &quot;.001&quot;, obtainedValue = 
 <p>The study results were successfully replicated. It appears the researchers consistently rounded the <em>t</em>-statistics down, producing three minor numerical errors. In the following summary, I report the statistics to three decimal places.</p>
 <p>A 2 Task (grip, estimate) X 2 View (closed-loop, open-loop) X 2 Condition (isolated, crowded) X 2 Size (3.00 cm, 3.75 cm) repeated measures ANOVA revealed a significant Task by Condition interaction, <em>F</em>(1, 9) = 6.818, <em>p</em> = 0.028. I then conducted post-hoc <em>t</em>-tests to decomposed the interation.</p>
 <p>Comparing performance in the manual estimation condition where the target disk was presented by itself, participants successfully differentiated between the two disk sizes on closed-loop trials, <em>t</em>(9) = 7.234, <em>p</em> &lt; .001, as well as on open-loop trials, <em>t</em>(9) = 9.198, <em>p</em> &lt; .001. A similar pattern of results was obtained when participants lifted the target disk in the isolation condition. Again, participants distinguished between the two disk sizes on closed-loop trials, <em>t</em>(9) = 4.295, <em>p</em> = 0.002, and on open-loop trials, <em>t</em>(9) = 4.796, <em>p</em> = 0.001.</p>
+<p>In the crowded condition, paricipants did not distinguish between disk sizes in when manually estimating its size (closed loop trials: <em>t</em>(9) = 1.021, <em>p</em> = 0.334; open loop trials: <em>t</em>(9) = 1.782, <em>p</em> = 0.108). In contrast, they still distinguished between sizes when manually grasping the disk (closed loop trials: <em>t</em>(9) = 4.216, <em>p</em> = 0.002; open loop trials: <em>t</em>(9) = 3.392, <em>p</em> = 0.008).</p>
 <pre class="r"><code>Author_Assistance = FALSE # was author assistance provided? (if so, enter TRUE)
 
 Insufficient_Information_Errors &lt;- 0 # how many discrete insufficient information issues did you encounter?
@@ -794,186 +1047,184 @@ if(reportType == &quot;final&quot;){
 <h1>Session information</h1>
 <pre class="r"><code>devtools::session_info()</code></pre>
 <pre><code>##  setting  value                       
-##  version  R version 3.4.3 (2017-11-30)
+##  version  R version 3.5.1 (2018-07-02)
 ##  system   x86_64, darwin15.6.0        
 ##  ui       X11                         
 ##  language (EN)                        
 ##  collate  en_US.UTF-8                 
 ##  tz       America/Los_Angeles         
-##  date     2018-05-31                  
+##  date     2018-10-19                  
 ## 
-##  package      * version  date      
-##  assertthat     0.2.0    2017-04-11
-##  backports      1.1.2    2017-12-13
-##  base         * 3.4.3    2017-12-07
-##  bindr          0.1      2016-11-13
-##  bindrcpp     * 0.2      2017-06-17
-##  broom        * 0.4.2    2017-02-13
-##  car            2.1-6    2017-11-19
-##  CARPSreports * 0.1      2018-05-31
-##  cellranger     1.1.0    2016-07-27
-##  cli            1.0.0    2017-11-05
-##  colorspace     1.3-2    2016-12-14
-##  compiler       3.4.3    2017-12-07
-##  crayon         1.3.4    2017-09-16
-##  datasets     * 3.4.3    2017-12-07
-##  devtools       1.13.5   2018-02-18
-##  digest         0.6.15   2018-01-28
-##  dplyr        * 0.7.4    2017-09-28
-##  evaluate       0.10.1   2017-06-24
-##  ez           * 4.4-0    2016-11-02
-##  forcats      * 0.2.0    2017-01-23
-##  foreign        0.8-69   2017-06-22
-##  ggplot2      * 2.2.1    2016-12-30
-##  glue           1.2.0    2017-10-29
-##  graphics     * 3.4.3    2017-12-07
-##  grDevices    * 3.4.3    2017-12-07
-##  grid           3.4.3    2017-12-07
-##  gtable         0.2.0    2016-02-26
-##  haven        * 1.1.0    2017-07-09
-##  highr          0.6      2016-05-09
-##  hms            0.4.0    2017-11-23
-##  htmltools      0.3.6    2017-04-28
-##  httr           1.3.1    2017-08-20
-##  jsonlite       1.5      2017-06-01
-##  knitr        * 1.20     2018-02-20
-##  lattice        0.20-35  2017-03-25
-##  lazyeval       0.2.1    2017-10-29
-##  lme4           1.1-14   2017-09-27
-##  lubridate      1.7.1    2017-11-03
-##  magrittr       1.5      2014-11-22
-##  MASS           7.3-47   2017-02-26
-##  Matrix         1.2-12   2017-11-20
-##  MatrixModels   0.4-1    2015-08-22
-##  memoise        1.1.0    2017-04-21
-##  methods      * 3.4.3    2017-12-07
-##  mgcv           1.8-22   2017-09-24
-##  minqa          1.2.4    2014-10-09
-##  mnormt         1.5-5    2016-10-15
-##  modelr         0.1.1    2017-07-24
-##  munsell        0.4.3    2016-02-13
-##  nlme           3.1-131  2017-02-06
-##  nloptr         1.0.4    2014-08-04
-##  nnet           7.3-12   2016-02-02
-##  parallel       3.4.3    2017-12-07
-##  pbkrtest       0.4-7    2017-03-15
-##  pillar         1.1.0    2018-01-14
-##  pkgconfig      2.0.1    2017-03-21
-##  plyr           1.8.4    2016-06-08
-##  psych          1.7.3.21 2017-03-22
-##  purrr        * 0.2.4    2017-10-18
-##  quantreg       5.34     2017-10-25
-##  R6             2.2.2    2017-06-17
-##  Rcpp           0.12.16  2018-03-13
-##  readr        * 1.1.1    2017-05-16
-##  readxl       * 1.1.0    2018-04-20
-##  reshape2       1.4.3    2017-12-11
-##  rlang          0.2.0    2018-02-20
-##  rmarkdown      1.9      2018-03-01
-##  rprojroot      1.3-2    2018-01-03
-##  rstudioapi     0.7      2017-09-07
-##  rvest          0.3.2    2016-06-17
-##  scales         0.5.0    2017-08-24
-##  SparseM        1.77     2017-04-23
-##  splines        3.4.3    2017-12-07
-##  stats        * 3.4.3    2017-12-07
-##  stringi        1.1.7    2018-03-12
-##  stringr      * 1.3.0    2018-02-19
-##  tibble       * 1.4.2    2018-01-22
-##  tidyr        * 0.7.2    2017-10-16
-##  tidyselect     0.2.3    2017-11-06
-##  tidyverse    * 1.2.1    2017-11-14
-##  tools          3.4.3    2017-12-07
-##  utils        * 3.4.3    2017-12-07
-##  withr          2.1.2    2018-04-23
-##  xml2           1.2.0    2018-01-24
-##  yaml           2.1.17   2018-02-27
+##  package      * version date      
+##  abind          1.4-5   2016-07-21
+##  assertthat     0.2.0   2017-04-11
+##  backports      1.1.2   2017-12-13
+##  base         * 3.5.1   2018-07-05
+##  bindr          0.1.1   2018-03-13
+##  bindrcpp     * 0.2.2   2018-03-29
+##  broom        * 0.5.0   2018-07-17
+##  car            3.0-0   2018-04-02
+##  carData        3.0-1   2018-03-28
+##  CARPSreports * 0.1     2018-08-14
+##  cellranger     1.1.0   2016-07-27
+##  cli            1.0.0   2017-11-05
+##  colorspace     1.3-2   2016-12-14
+##  compiler       3.5.1   2018-07-05
+##  crayon         1.3.4   2017-09-16
+##  curl           3.2     2018-03-28
+##  data.table     1.11.4  2018-05-27
+##  datasets     * 3.5.1   2018-07-05
+##  devtools       1.13.6  2018-06-27
+##  digest         0.6.15  2018-01-28
+##  dplyr        * 0.7.6   2018-06-29
+##  evaluate       0.11    2018-07-17
+##  ez           * 4.4-0   2016-11-02
+##  forcats      * 0.3.0   2018-02-19
+##  foreign        0.8-70  2017-11-28
+##  ggplot2      * 3.0.0   2018-07-03
+##  glue           1.3.0   2018-07-17
+##  graphics     * 3.5.1   2018-07-05
+##  grDevices    * 3.5.1   2018-07-05
+##  grid           3.5.1   2018-07-05
+##  gtable         0.2.0   2016-02-26
+##  haven        * 1.1.2   2018-06-27
+##  highr          0.7     2018-06-09
+##  hms            0.4.2   2018-03-10
+##  htmltools      0.3.6   2017-04-28
+##  httr           1.3.1   2017-08-20
+##  jsonlite       1.5     2017-06-01
+##  knitr        * 1.20    2018-02-20
+##  lattice        0.20-35 2017-03-25
+##  lazyeval       0.2.1   2017-10-29
+##  lme4           1.1-17  2018-04-03
+##  lubridate      1.7.4   2018-04-11
+##  magrittr       1.5     2014-11-22
+##  MASS           7.3-50  2018-04-30
+##  Matrix         1.2-14  2018-04-13
+##  memoise        1.1.0   2017-04-21
+##  methods      * 3.5.1   2018-07-05
+##  mgcv           1.8-24  2018-06-23
+##  minqa          1.2.4   2014-10-09
+##  modelr         0.1.2   2018-05-11
+##  munsell        0.5.0   2018-06-12
+##  nlme           3.1-137 2018-04-07
+##  nloptr         1.0.4   2017-08-22
+##  openxlsx       4.1.0   2018-05-26
+##  pillar         1.3.0   2018-07-14
+##  pkgconfig      2.0.1   2017-03-21
+##  plyr           1.8.4   2016-06-08
+##  purrr        * 0.2.5   2018-05-29
+##  R6             2.2.2   2017-06-17
+##  Rcpp           0.12.19 2018-10-01
+##  readr        * 1.1.1   2017-05-16
+##  readxl       * 1.1.0   2018-04-20
+##  reshape2       1.4.3   2017-12-11
+##  rio            0.5.10  2018-03-29
+##  rlang          0.2.1   2018-05-30
+##  rmarkdown      1.10    2018-06-11
+##  rprojroot      1.3-2   2018-01-03
+##  rstudioapi     0.7     2017-09-07
+##  rvest          0.3.2   2016-06-17
+##  scales         0.5.0   2017-08-24
+##  splines        3.5.1   2018-07-05
+##  stats        * 3.5.1   2018-07-05
+##  stringi        1.2.4   2018-07-20
+##  stringr      * 1.3.1   2018-05-10
+##  tibble       * 1.4.2   2018-01-22
+##  tidyr        * 0.8.1   2018-05-18
+##  tidyselect     0.2.4   2018-02-26
+##  tidyverse    * 1.2.1   2017-11-14
+##  tools          3.5.1   2018-07-05
+##  utils        * 3.5.1   2018-07-05
+##  withr          2.1.2   2018-03-15
+##  xml2           1.2.0   2018-01-24
+##  yaml           2.2.0   2018-07-25
+##  zip            1.0.0   2017-04-25
 ##  source                                     
-##  cran (@0.2.0)                              
-##  CRAN (R 3.4.3)                             
+##  CRAN (R 3.5.0)                             
+##  CRAN (R 3.5.0)                             
+##  CRAN (R 3.5.0)                             
 ##  local                                      
-##  cran (@0.1)                                
-##  cran (@0.2)                                
-##  cran (@0.4.2)                              
-##  CRAN (R 3.4.3)                             
-##  Github (METRICS-CARPS/CARPSreports@95b6979)
-##  cran (@1.1.0)                              
-##  cran (@1.0.0)                              
-##  cran (@1.3-2)                              
+##  CRAN (R 3.5.0)                             
+##  CRAN (R 3.5.0)                             
+##  CRAN (R 3.5.0)                             
+##  CRAN (R 3.5.0)                             
+##  CRAN (R 3.5.0)                             
+##  Github (METRICS-CARPS/CARPSreports@a1e4cf4)
+##  CRAN (R 3.5.0)                             
+##  CRAN (R 3.5.0)                             
+##  CRAN (R 3.5.0)                             
 ##  local                                      
-##  cran (@1.3.4)                              
+##  CRAN (R 3.5.0)                             
+##  CRAN (R 3.5.0)                             
+##  CRAN (R 3.5.0)                             
 ##  local                                      
-##  cran (@1.13.5)                             
-##  cran (@0.6.15)                             
-##  cran (@0.7.4)                              
-##  CRAN (R 3.4.1)                             
-##  CRAN (R 3.4.0)                             
-##  cran (@0.2.0)                              
-##  CRAN (R 3.4.3)                             
-##  cran (@2.2.1)                              
-##  cran (@1.2.0)                              
-##  local                                      
-##  local                                      
-##  local                                      
-##  cran (@0.2.0)                              
-##  cran (@1.1.0)                              
-##  CRAN (R 3.4.0)                             
-##  cran (@0.4.0)                              
-##  CRAN (R 3.4.0)                             
-##  CRAN (R 3.4.1)                             
-##  CRAN (R 3.4.0)                             
-##  cran (@1.20)                               
-##  CRAN (R 3.4.3)                             
-##  cran (@0.2.1)                              
-##  CRAN (R 3.4.2)                             
-##  cran (@1.7.1)                              
-##  CRAN (R 3.4.0)                             
-##  CRAN (R 3.4.3)                             
-##  CRAN (R 3.4.3)                             
-##  CRAN (R 3.4.0)                             
-##  CRAN (R 3.4.0)                             
-##  local                                      
-##  CRAN (R 3.4.3)                             
-##  CRAN (R 3.4.0)                             
-##  cran (@1.5-5)                              
-##  cran (@0.1.1)                              
-##  cran (@0.4.3)                              
-##  CRAN (R 3.4.3)                             
-##  CRAN (R 3.4.0)                             
-##  CRAN (R 3.4.3)                             
-##  local                                      
-##  CRAN (R 3.4.0)                             
-##  CRAN (R 3.4.3)                             
-##  cran (@2.0.1)                              
-##  cran (@1.8.4)                              
-##  cran (@1.7.3.2)                            
-##  cran (@0.2.4)                              
-##  CRAN (R 3.4.2)                             
-##  CRAN (R 3.4.0)                             
-##  cran (@0.12.16)                            
-##  cran (@1.1.1)                              
-##  cran (@1.1.0)                              
-##  cran (@1.4.3)                              
-##  cran (@0.2.0)                              
-##  cran (@1.9)                                
-##  cran (@1.3-2)                              
-##  CRAN (R 3.4.1)                             
-##  cran (@0.3.2)                              
-##  cran (@0.5.0)                              
-##  CRAN (R 3.4.0)                             
+##  CRAN (R 3.5.0)                             
+##  CRAN (R 3.5.0)                             
+##  CRAN (R 3.5.1)                             
+##  CRAN (R 3.5.0)                             
+##  CRAN (R 3.5.0)                             
+##  CRAN (R 3.5.0)                             
+##  CRAN (R 3.5.1)                             
+##  CRAN (R 3.5.0)                             
+##  CRAN (R 3.5.0)                             
 ##  local                                      
 ##  local                                      
-##  cran (@1.1.7)                              
-##  cran (@1.3.0)                              
-##  CRAN (R 3.4.3)                             
-##  cran (@0.7.2)                              
-##  cran (@0.2.3)                              
-##  cran (@1.2.1)                              
+##  local                                      
+##  CRAN (R 3.5.0)                             
+##  CRAN (R 3.5.0)                             
+##  CRAN (R 3.5.0)                             
+##  CRAN (R 3.5.0)                             
+##  CRAN (R 3.5.0)                             
+##  CRAN (R 3.5.0)                             
+##  CRAN (R 3.5.0)                             
+##  CRAN (R 3.5.0)                             
+##  CRAN (R 3.5.1)                             
+##  CRAN (R 3.5.0)                             
+##  CRAN (R 3.5.0)                             
+##  CRAN (R 3.5.0)                             
+##  CRAN (R 3.5.0)                             
+##  CRAN (R 3.5.1)                             
+##  CRAN (R 3.5.1)                             
+##  CRAN (R 3.5.0)                             
+##  local                                      
+##  CRAN (R 3.5.1)                             
+##  CRAN (R 3.5.0)                             
+##  CRAN (R 3.5.0)                             
+##  CRAN (R 3.5.0)                             
+##  CRAN (R 3.5.1)                             
+##  CRAN (R 3.5.0)                             
+##  CRAN (R 3.5.0)                             
+##  CRAN (R 3.5.0)                             
+##  CRAN (R 3.5.0)                             
+##  CRAN (R 3.5.0)                             
+##  CRAN (R 3.5.0)                             
+##  CRAN (R 3.5.0)                             
+##  cran (@0.12.19)                            
+##  CRAN (R 3.5.0)                             
+##  CRAN (R 3.5.0)                             
+##  CRAN (R 3.5.0)                             
+##  CRAN (R 3.5.0)                             
+##  CRAN (R 3.5.0)                             
+##  CRAN (R 3.5.0)                             
+##  CRAN (R 3.5.0)                             
+##  CRAN (R 3.5.0)                             
+##  CRAN (R 3.5.0)                             
+##  CRAN (R 3.5.0)                             
 ##  local                                      
 ##  local                                      
-##  Github (r-lib/withr@79d7b0d)               
-##  cran (@1.2.0)                              
-##  cran (@2.1.17)</code></pre>
+##  CRAN (R 3.5.0)                             
+##  CRAN (R 3.5.0)                             
+##  CRAN (R 3.5.0)                             
+##  CRAN (R 3.5.0)                             
+##  CRAN (R 3.5.0)                             
+##  CRAN (R 3.5.0)                             
+##  local                                      
+##  local                                      
+##  CRAN (R 3.5.0)                             
+##  CRAN (R 3.5.0)                             
+##  CRAN (R 3.5.0)                             
+##  CRAN (R 3.5.0)</code></pre>
 </div>
 
 
