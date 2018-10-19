@@ -8,7 +8,7 @@ output:
 
 ```{r}
 articleID <- "6-1-2015_PS" # insert the article ID code here e.g., "10-3-2015_PS"
-reportType <- 'pilot'
+reportType <- 'final'
 pilotNames <- "Elizabeth Blevins, Barbara Barbosa Born" # insert the pilot's name here e.g., "Tom Hardwicke". If there are multiple pilots enter both names in a character string e.g., "Tom Hardwicke, Bob Dylan"
 copilotNames <- "Manuel Bohn" # insert the co-pilot's name here e.g., "Michael Frank". If there are multiple co-pilots enter both names in a character string e.g., "Tom Hardwicke, Bob Dylan"
 pilotTTC <- 420 # insert the pilot's estimated time to complete (in minutes, fine to approximate) e.g., 120
