@@ -1,2 +1,2 @@
-articleID,pilotNames,copilotNames,pilotTTC,copilotTTC,pilotStartDate,copilotStartDate,completionDate,Author_Assistance,finalOutcome,Insufficient_Information_Errors,locus_typo,locus_specification,locus_analysis,locus_data,locus_unidentified
-6-1-2015_PS,"Elizabeth Blevins, Barbara Barbosa Born",Manuel Bohn,420,60,2020-10-27,2020-10-19,2020-10-19,FALSE,Failure without author assistance,0,NA,NA,NA,NA,NA
+articleID,pilotNames,copilotNames,pilotTTC,copilotTTC,pilotStartDate,copilotStartDate,completionDate,Author_Assistance,finalOutcome,Insufficient_Information_Errors,locus_typo,locus_specification,locus_analysis,locus_data,locus_unidentified,locus_typo_resolved,locus_specification_resolved,locus_analysis_resolved,locus_data_resolved,locus_unidentified_resolved
+6-1-2015_PS,"Elizabeth Blevins, Barbara Barbosa Born",Manuel Bohn,420,60,2020-10-27,2020-10-19,2020-10-19,FALSE,Success without author assistance,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
