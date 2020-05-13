@@ -220,6 +220,7 @@ ttest_results_clean
 ```
 
 Lastly, I used the `compareValues` function to record the number of errors. For two *t*-tests, the associated *p*-values were recorded as *p* < .001 in the manuscript. I could not use the `compareValues` function, but since the *p*-values I obtained similarly fell below .001, I did not count them as errors. (I consulted with Tom via email regarding this issue.)
+
 ```{r echo=FALSE}
 # save statistics for conclusion
 # anova
